@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import features from "../data/features.json";
 import Navbar from "../components/Navbar";
 import UserStories from "../components/UserStories";
+import IndiaMap from "../components/IndiaMap";
 
 const FEATURE_THEMES = {
   mudra:      { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "🤲" },
@@ -105,7 +106,11 @@ export default function FeaturePage() {
         </div>
 
         {/* Implementation area */}
-        {id === "stories" ? (
+        {id === "map" ? (
+          <div style={{ marginTop: "32px", width: "100%", display: "flex", justifyContent: "center" }}>
+            <IndiaMap theme={theme} />
+          </div>
+        ) : id === "stories" ? (
           <div style={{ marginTop: "32px", width: "100%", display: "flex", justifyContent: "center" }}>
             <UserStories theme={theme} />
           </div>
