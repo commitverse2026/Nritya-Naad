@@ -82,7 +82,7 @@ Expected Output:
 * Dynamic rendering
 
 ---
-10. Guess the Dance Form
+8. Guess the Dance Form
     Description:
     Show an image and ask user to identify the dance form.
 
@@ -123,7 +123,7 @@ Expected Output:
 
 * Vertical video feed
 * Smooth scrolling
-* Like/comment (optional)
+* Like/comment
 
 ---
 
