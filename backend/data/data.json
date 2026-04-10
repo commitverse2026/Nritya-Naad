@@ -1,0 +1,7 @@
+{
+  "id": "mudra",
+  "name": "Mudra Detection",
+  "description": "Recognise Bharatanatyam hand gestures using computer vision",
+  "theme": "#C2185B",
+  "icon": "🖐️"
+}
