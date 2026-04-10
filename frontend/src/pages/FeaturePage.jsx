@@ -6,6 +6,7 @@ import DanceGallery from "../components/DanceGallery";
 import AcademyListing from "../components/AcademyListing";
 import CulturalChatbot from "../components/CulturalChatbot";
 import ArtLineageMindMap from "../components/ArtLineageMindMap";
+import VoicePitchAnalyzer from "../components/VoicePitchAnalyzer";
 
 const FEATURE_THEMES = {
   mudra:      { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "🤲" },
@@ -129,6 +130,10 @@ export default function FeaturePage() {
               <>
                 A <strong style={{ color: theme.color, fontWeight: 500 }}>visual mind map</strong> of Indian classical art lineages — dance (SNA forms), Hindustani &amp; Carnatic music, and key śāstras &amp; pedagogy. Tap any node for details.
               </>
+            ) : id === "pitch" ? (
+              <>
+                <strong style={{ color: theme.color, fontWeight: 500 }}>Analyse your singing pitch in real time</strong> using your microphone, with live frequency, note name, and confidence feedback.
+              </>
             ) : (
               <>
                 This is your dedicated workspace for the <strong style={{ color: theme.color, fontWeight: 500 }}>{feature?.name}</strong> module.
@@ -154,6 +159,10 @@ export default function FeaturePage() {
         ) : id === "mindmap" || id === "map" ? (
           <div style={{ marginTop: "8px", width: "100%" }}>
             <ArtLineageMindMap theme={theme} />
+          </div>
+        ) : id === "pitch" ? (
+          <div style={{ marginTop: "8px", width: "100%" }}>
+            <VoicePitchAnalyzer theme={theme} />
           </div>
         ) : id === "stories" ? (
           <div style={{ marginTop: "32px", width: "100%", display: "flex", justifyContent: "center" }}>

@@ -26,6 +26,7 @@ const CARD_BLURBS = {
   chatbot: "AI cultural Q&A — add GROQ_API_KEY (free) or OpenAI/Gemini in backend/.env.",
   mindmap: "Visual map of Indian classical art lineages — dance, music, and śāstra.",
   map: "Interactive lineage mind map — classical dance, music systems, texts & pedagogy.",
+  pitch: "Analyse your singing pitch in real time with mic input, note detection, and confidence meters.",
 };
 
 export default function FeatureCard({ feature }) {
