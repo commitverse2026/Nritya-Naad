@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import features from "../data/features.json";
 import Navbar from "../components/Navbar";
-
+import { useState } from "react";
 const FEATURE_THEMES = {
   mudra:      { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "🤲" },
   gallery:    { color: "#00897B", bg: "rgba(0,137,123,0.08)", gradient: "linear-gradient(135deg, #00897B, #004D40)", icon: "🖼️" },
@@ -25,7 +25,38 @@ export default function FeaturePage() {
   const { id } = useParams();
   const feature = features.find((f) => f.id === id);
   const theme = FEATURE_THEMES[id] || FEATURE_THEMES.mudra;
+  const [academies, setAcademies] = useState([]);
+const [form, setForm] = useState({
+  name: "",
+  location: "",
+  fees: "",
+  offerings: "",
+});
 
+const handleChange = (e) => {
+  setForm({ ...form, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  if (!form.name || !form.location) return;
+
+  setAcademies([...academies, form]);
+
+  setForm({
+    name: "",
+    location: "",
+    fees: "",
+    offerings: "",
+  });
+};
+const inputStyle = {
+  padding: "10px",
+  borderRadius: "10px",
+  border: "1px solid #ccc",
+  outline: "none",
+};
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Navbar />
@@ -105,28 +136,106 @@ export default function FeaturePage() {
 
         {/* Implementation area */}
         <div style={{
-          borderRadius: "24px",
-          padding: "60px 40px",
-          border: `2px dashed ${theme.color}40`,
-          background: theme.bg,
-          textAlign: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}>
-          <div style={{ fontSize: "48px", marginBottom: "16px" }}>🚀</div>
-          <h2 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "22px",
-            fontWeight: 700,
-            color: theme.color,
-            marginBottom: "10px",
-          }}>
-            Implementation Area
-          </h2>
-          <p style={{ fontSize: "14px", color: "#8B6452", fontWeight: 300 }}>
-            Drop your feature components and logic right here
-          </p>
-        </div>
+  borderRadius: "24px",
+  padding: "40px",
+  border: `2px dashed ${theme.color}40`,
+  background: theme.bg,
+}}>
+
+  {/* FORM */}
+  <h2 style={{
+    fontSize: "20px",
+    marginBottom: "20px",
+    color: theme.color,
+    fontWeight: "600"
+  }}>
+    Add Academy
+  </h2>
+
+  <form onSubmit={handleSubmit} style={{ marginBottom: "40px" }}>
+    <div style={{ display: "grid", gap: "12px" }}>
+      <input
+        type="text"
+        name="name"
+        placeholder="Academy Name"
+        value={form.name}
+        onChange={handleChange}
+        style={inputStyle}
+      />
+
+      <input
+        type="text"
+        name="location"
+        placeholder="Location"
+        value={form.location}
+        onChange={handleChange}
+        style={inputStyle}
+      />
+
+      <input
+        type="text"
+        name="fees"
+        placeholder="Fees"
+        value={form.fees}
+        onChange={handleChange}
+        style={inputStyle}
+      />
+
+      <input
+        type="text"
+        name="offerings"
+        placeholder="Offerings (e.g. Bharatanatyam, Kathak)"
+        value={form.offerings}
+        onChange={handleChange}
+        style={inputStyle}
+      />
+
+      <button type="submit" style={{
+        padding: "10px",
+        background: theme.color,
+        color: "#fff",
+        border: "none",
+        borderRadius: "10px",
+        cursor: "pointer",
+        fontWeight: "500"
+      }}>
+        Add Academy
+      </button>
+    </div>
+  </form>
+
+  {/* LIST VIEW */}
+  <h2 style={{
+    fontSize: "20px",
+    marginBottom: "20px",
+    color: theme.color,
+    fontWeight: "600"
+  }}>
+    Academy Listings
+  </h2>
+
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    gap: "20px"
+  }}>
+    {academies.map((academy, index) => (
+      <div key={index} style={{
+        background: "#fff",
+        borderRadius: "16px",
+        padding: "20px",
+        border: "1px solid rgba(0,0,0,0.05)",
+        boxShadow: "0 4px 10px rgba(0,0,0,0.05)"
+      }}>
+        <h3 style={{ color: theme.color }}>{academy.name}</h3>
+        <p><strong>📍</strong> {academy.location}</p>
+        <p><strong>💰</strong> {academy.fees}</p>
+        <p><strong>🎭</strong> {academy.offerings}</p>
+      </div>
+    ))}
+  </div>
+
+</div>
 
       </div>
     </div>
