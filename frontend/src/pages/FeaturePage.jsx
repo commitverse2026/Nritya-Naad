@@ -1,17 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import features from "../data/features.json";
 import Navbar from "../components/Navbar";
-<<<<<<< HEAD
 import MudraDetection from "../components/MudraDetection";
-=======
 import IndiaMap from "../features/IndiaMap";
-
-const FEATURE_COMPONENTS = {
-  map: IndiaMap,
-};
 import Academy from "../features/Academy";
 import UserStories from "../components/UserStories";
->>>>>>> c2eead136b607af0fdd3024ae230f5150bc061bf
 
 const FEATURE_THEMES = {
   mudra:      { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "🤲" },
@@ -33,6 +26,7 @@ const FEATURE_THEMES = {
 };
 
 const FEATURE_COMPONENTS = {
+  map: IndiaMap,
   academy: Academy,
 };
 
@@ -122,16 +116,12 @@ export default function FeaturePage() {
         {/* Feature content */}
         {FeatureComponent ? (
           <FeatureComponent />
-        {/* Implementation area */}
-<<<<<<< HEAD
-        {id === "mudra" ? (
+        ) : id === "mudra" ? (
           <MudraDetection theme={theme} />
-=======
-        {id === "stories" ? (
+        ) : id === "stories" ? (
           <div style={{ marginTop: "32px", width: "100%", display: "flex", justifyContent: "center" }}>
             <UserStories theme={theme} />
           </div>
->>>>>>> c2eead136b607af0fdd3024ae230f5150bc061bf
         ) : (
           <div style={{
             borderRadius: "24px",
