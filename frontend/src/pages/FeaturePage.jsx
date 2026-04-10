@@ -23,6 +23,10 @@ const FEATURE_THEMES = {
   swaras: { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", gradient: "linear-gradient(135deg, #FF6B00, #E85D04)", icon: "Swaras" },
 };
 
+const FEATURE_COMPONENTS = {
+  academy: Academy,
+};
+
 export default function FeaturePage() {
   const { id } = useParams();
   const feature = features.find((f) => f.id === id);
