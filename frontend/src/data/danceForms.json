@@ -4,83 +4,55 @@
     "name": "Bharatanatyam",
     "description": "One of the oldest classical dance forms of India, originating from Tamil Nadu. Known for its fixed upper torso, bent legs, and intricate facial expressions.",
     "origin": "Tamil Nadu",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bharatanatyam_dancer.jpg/800px-Bharatanatyam_dancer.jpg"
+    "image": "/images/Bharatanatyam.jpg"
   },
   {
     "id": "kathak",
     "name": "Kathak",
     "description": "A classical dance form from North India, known for its storytelling aspect, intricate footwork, and swift spins.",
     "origin": "Uttar Pradesh",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Kathak_dancer.jpg/800px-Kathak_dancer.jpg"
+    "image": "/images/Kathak.jpg"
   },
   {
     "id": "kuchipudi",
     "name": "Kuchipudi",
     "description": "A classical dance form from Andhra Pradesh, combining fast rhythms, fluid movements, and expressive gestures.",
     "origin": "Andhra Pradesh",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Kuchipudi_dance_performance.jpg/800px-Kuchipudi_dance_performance.jpg"
+    "image": "/images/Kuchipudi.jpg"
   },
   {
     "id": "odissi",
     "name": "Odissi",
     "description": "An ancient classical dance form from Odisha, characterized by its tribhangi posture and graceful movements.",
     "origin": "Odisha",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Odissi_dance_pose.jpg/800px-Odissi_dance_pose.jpg"
+    "image": "/images/Odissi.jpg"
   },
   {
     "id": "manipuri",
     "name": "Manipuri",
     "description": "A graceful and gentle dance form from Manipur, featuring smooth, flowing movements and circular choreography.",
     "origin": "Manipur",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Manipuri_dance_performance.jpg/800px-Manipuri_dance_performance.jpg"
+    "image": "/images/Manipuri.jpg"
   },
   {
     "id": "kathakali",
     "name": "Kathakali",
     "description": "A highly stylized classical dance form from Kerala, known for its elaborate costumes, makeup, and dramatic expressions.",
     "origin": "Kerala",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Kathakali_performer.jpg/800px-Kathakali_performer.jpg"
+    "image": "/images/Kathakali.jpg"
   },
   {
     "id": "mohiniyattam",
     "name": "Mohiniyattam",
     "description": "A graceful classical dance form from Kerala, characterized by gentle, swaying movements and elegant gestures.",
     "origin": "Kerala",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mohiniyattam_dancer.jpg/800px-Mohiniyattam_dancer.jpg"
+    "image": "/images/Mohiniyattam.jpg"
   },
   {
     "id": "sattriya",
     "name": "Sattriya",
     "description": "A classical dance form from Assam, traditionally performed in monasteries as part of religious practices.",
     "origin": "Assam",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Sattriya_dance_performance.jpg/800px-Sattriya_dance_performance.jpg"
-  },
-  {
-    "id": "bhangra",
-    "name": "Bhangra",
-    "description": "A vibrant folk dance from Punjab, performed during harvest festivals with energetic movements and dhol beats.",
-    "origin": "Punjab",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Bhangra_dancers.jpg/800px-Bhangra_dancers.jpg"
-  },
-  {
-    "id": "garba",
-    "name": "Garba",
-    "description": "A popular folk dance from Gujarat, performed in circular formations during Navratri celebrations.",
-    "origin": "Gujarat",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Garba_dance_performance.jpg/800px-Garba_dance_performance.jpg"
-  },
-  {
-    "id": "lavani",
-    "name": "Lavani",
-    "description": "A powerful folk dance form from Maharashtra, known for its rhythmic movements and expressive storytelling.",
-    "origin": "Maharashtra",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Lavani_dance_performance.jpg/800px-Lavani_dance_performance.jpg"
-  },
-  {
-    "id": "bihu",
-    "name": "Bihu",
-    "description": "A folk dance from Assam, performed during the Bihu festival with energetic movements and traditional music.",
-    "origin": "Assam",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Bihu_dance_performance.jpg/800px-Bihu_dance_performance.jpg"
+    "image": "/images/Sattriya.jpg"
   }
 ]
