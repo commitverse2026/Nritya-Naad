@@ -1,7 +1,17 @@
 import { useParams, Link } from "react-router-dom";
 import features from "../data/features.json";
 import Navbar from "../components/Navbar";
+<<<<<<< HEAD
 import MudraDetection from "../components/MudraDetection";
+=======
+import IndiaMap from "../features/IndiaMap";
+
+const FEATURE_COMPONENTS = {
+  map: IndiaMap,
+};
+import Academy from "../features/Academy";
+import UserStories from "../components/UserStories";
+>>>>>>> c2eead136b607af0fdd3024ae230f5150bc061bf
 
 const FEATURE_THEMES = {
   mudra:      { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "🤲" },
@@ -22,10 +32,15 @@ const FEATURE_THEMES = {
   swaras:     { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", gradient: "linear-gradient(135deg, #FF6B00, #E85D04)", icon: "🎶" },
 };
 
+const FEATURE_COMPONENTS = {
+  academy: Academy,
+};
+
 export default function FeaturePage() {
   const { id } = useParams();
   const feature = features.find((f) => f.id === id);
   const theme = FEATURE_THEMES[id] || FEATURE_THEMES.mudra;
+  const FeatureComponent = FEATURE_COMPONENTS[id] || null;
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -104,9 +119,19 @@ export default function FeaturePage() {
           </p>
         </div>
 
+        {/* Feature content */}
+        {FeatureComponent ? (
+          <FeatureComponent />
         {/* Implementation area */}
+<<<<<<< HEAD
         {id === "mudra" ? (
           <MudraDetection theme={theme} />
+=======
+        {id === "stories" ? (
+          <div style={{ marginTop: "32px", width: "100%", display: "flex", justifyContent: "center" }}>
+            <UserStories theme={theme} />
+          </div>
+>>>>>>> c2eead136b607af0fdd3024ae230f5150bc061bf
         ) : (
           <div style={{
             borderRadius: "24px",
