@@ -3,6 +3,7 @@ import features from "../data/features.json";
 import Navbar from "../components/Navbar";
 import LearnSwarasTool from "../components/LearnSwarasTool";
 import BeatVisualizer from "../components/BeatVisualizer";
+import DanceMindMap from "../components/DanceMindMap";
 
 const FEATURE_THEMES = {
   mudra: { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "Mudra" },
@@ -29,6 +30,7 @@ export default function FeaturePage() {
   const theme = FEATURE_THEMES[id] || FEATURE_THEMES.mudra;
   const isSwaras = id === "swaras";
   const isVisualizer = id === "visualizer";
+  const isMindMap = id === "mindmap";
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
@@ -126,6 +128,8 @@ export default function FeaturePage() {
 
         {isSwaras ? (
           <LearnSwarasTool />
+        ) : isMindMap ? (
+          <DanceMindMap />
         ) : isVisualizer ? (
           <BeatVisualizer />
         ) : (

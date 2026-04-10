@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Features from "./pages/Features";
 import FeaturePage from "./pages/FeaturePage";
+import "./App.css";
 
 export default function App() {
   return (

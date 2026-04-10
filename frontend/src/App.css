@@ -161,6 +161,230 @@ body::after {
   color: var(--muted);
 }
 
+.mindmap-tool {
+  border-radius: 28px;
+  padding: 34px;
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 240, 0.94)),
+    radial-gradient(circle at top left, rgba(255, 107, 0, 0.16), transparent 28%);
+  border: 1px solid rgba(255, 107, 0, 0.14);
+  box-shadow: 0 24px 60px rgba(93, 58, 26, 0.08);
+}
+
+.mindmap-tool__intro {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.mindmap-tool__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--deep-saffron);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.mindmap-tool__intro h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.mindmap-tool__description {
+  max-width: 560px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.mindmap-tool__legend {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 107, 0, 0.08);
+  color: var(--deep-saffron);
+  font-size: 0.9rem;
+  min-width: 210px;
+}
+
+.mindmap-tool__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.mindmap-canvas {
+  position: relative;
+  min-height: 540px;
+  border-radius: 26px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(194, 24, 91, 0.12), transparent 24%),
+    radial-gradient(circle at 78% 18%, rgba(57, 73, 171, 0.14), transparent 25%),
+    radial-gradient(circle at 78% 76%, rgba(0, 137, 123, 0.14), transparent 24%),
+    linear-gradient(180deg, #fffdf9, #fff6ec);
+  border: 1px solid rgba(255, 107, 0, 0.1);
+}
+
+.mindmap-canvas__glow {
+  position: absolute;
+  inset: 18% 24%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 179, 0, 0.16), transparent 70%);
+  filter: blur(14px);
+}
+
+.mindmap-canvas__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mindmap-canvas__line {
+  stroke: rgba(139, 100, 82, 0.32);
+  stroke-width: 0.45;
+  stroke-linecap: round;
+}
+
+.mindmap-canvas__line.is-active {
+  stroke: rgba(255, 107, 0, 0.8);
+  stroke-width: 0.7;
+}
+
+.mindmap-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  min-width: 128px;
+  max-width: 144px;
+  border: none;
+  border-radius: 22px;
+  padding: 14px 16px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--node-color) 18%, white), white 82%);
+  box-shadow:
+    0 16px 32px rgba(26, 10, 0, 0.1),
+    inset 0 0 0 1px color-mix(in srgb, var(--node-color) 20%, white);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  text-align: left;
+}
+
+.mindmap-node:hover,
+.mindmap-node:focus-visible {
+  transform: translate(-50%, -52%);
+  box-shadow:
+    0 20px 38px rgba(26, 10, 0, 0.14),
+    inset 0 0 0 1px color-mix(in srgb, var(--node-color) 28%, white);
+  outline: none;
+}
+
+.mindmap-node.is-active {
+  transform: translate(-50%, -54%) scale(1.02);
+  box-shadow:
+    0 24px 42px rgba(26, 10, 0, 0.16),
+    0 0 0 3px color-mix(in srgb, var(--node-color) 28%, white);
+}
+
+.mindmap-node__name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  color: color-mix(in srgb, var(--node-color) 70%, black);
+  font-weight: 700;
+}
+
+.mindmap-node__region {
+  font-size: 0.76rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mindmap-panel {
+  border-radius: 26px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 107, 0, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.mindmap-panel__label {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--deep-saffron);
+  margin-bottom: 10px;
+}
+
+.mindmap-panel h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+
+.mindmap-panel__meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mindmap-panel__meta div {
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 107, 0, 0.06);
+}
+
+.mindmap-panel__meta-title {
+  display: block;
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.mindmap-panel__summary {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.mindmap-panel__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mindmap-panel__chip {
+  border: 1px solid rgba(255, 107, 0, 0.14);
+  background: #fff8f0;
+  color: var(--deep-saffron);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .mindmap-tool__intro,
+  .mindmap-tool__layout {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .mindmap-tool__legend {
+    min-width: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .swaras-tool {
     padding: 24px 18px;
@@ -172,5 +396,27 @@ body::after {
 
   .swaras-tool__button {
     min-height: 108px;
+  }
+
+  .mindmap-tool {
+    padding: 22px 16px;
+  }
+
+  .mindmap-canvas {
+    min-height: 620px;
+  }
+
+  .mindmap-node {
+    min-width: 112px;
+    max-width: 124px;
+    padding: 12px 12px;
+  }
+
+  .mindmap-panel {
+    padding: 18px;
+  }
+
+  .mindmap-panel__meta {
+    grid-template-columns: 1fr;
   }
 }
