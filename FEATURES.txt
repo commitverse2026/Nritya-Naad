@@ -13,7 +13,7 @@ Expected Output:
 
 2. Dance Forms Gallery
    Description:
-   Display images of different Indian dance forms provided in the project.
+   Display images of different Indian dance forms using the open images available on internet.
 
 Expected Output:
 
@@ -43,7 +43,7 @@ Expected Output:
 
 * Chat UI
 * User types question
-* Bot responds with relevant answer (static or API-based)
+* Bot responds with relevant answer (API-based)
 
 ---
 
@@ -73,7 +73,7 @@ Expected Output:
 
 7. Performance Upload
    Description:
-   Users can upload images/videos of their performances.
+   Users have to upload atleast one image and one video of their performances.
 
 Expected Output:
 
@@ -83,18 +83,7 @@ Expected Output:
 
 ---
 
-8. Classical Music Raga Explorer
-   Description:
-   Explore different ragas with details like mood and time of day.
-
-Expected Output:
-
-* List of ragas
-* On click → show info + audio (if available)
-
----
-
-9. Quiz / Challenge Section
+8. Quiz / Challenge Section
    Description:
    Interactive quiz based on dance and music knowledge.
 
@@ -106,7 +95,7 @@ Expected Output:
 
 ---
 
-10. Guess the Dance Form
+9. Guess the Dance Form
     Description:
     Show an image and ask user to identify the dance form.
 
@@ -118,7 +107,7 @@ Expected Output:
 
 ---
 
-11. Identify the Instrument
+10. Identify the Instrument
     Description:
     Show instrument image or sound and ask user to identify it.
 
@@ -129,20 +118,7 @@ Expected Output:
 * Score tracking
 
 ---
-
-12. MCQ + Score Tracking
-    Description:
-    General MCQ system with score tracking.
-
-Expected Output:
-
-* Multiple questions
-* Score displayed at end
-* Optional leaderboard
-
----
-
-13. Event / Workshop Listing
+11. Event / Workshop Listing
     Description:
     Display upcoming dance/music workshops.
 
@@ -153,9 +129,9 @@ Expected Output:
 
 ---
 
-14. Event Map Integration
+12. Event Map Integration
     Description:
-    Show event locations on a map.
+    Show event locations on a map. [Dynamic Map changing using Online API]
 
 Expected Output:
 
@@ -164,9 +140,9 @@ Expected Output:
 
 ---
 
-15. Reels Section
+13. Reels Section
     Description:
-    Vertical scrolling video section similar to reels.
+    Vertical scrolling video section similar to reels. [Atleast 4 relevant reels]
 
 Expected Output:
 
@@ -176,7 +152,7 @@ Expected Output:
 
 ---
 
-16. Mind Map (Dance Forms)
+14. Mind Map (Dance Forms)
     Description:
     Interactive visual map showing relationships between dance forms and regions.
 
@@ -188,7 +164,7 @@ Expected Output:
 
 ---
 
-17. Voice Pitch Detection
+15. Voice Pitch Detection
     Description:
     Detect user's voice pitch and compare to musical notes.
 
@@ -200,7 +176,7 @@ Expected Output:
 
 ---
 
-18. Karaoke / Lyrics Sync
+16. Karaoke / Lyrics Sync
     Description:
     Display lyrics synced with music.
 
@@ -212,7 +188,7 @@ Expected Output:
 
 ---
 
-19. Beat Visualizer
+17. Beat Visualizer
     Description:
     Show animated bars or waveform while music plays.
 
@@ -223,7 +199,7 @@ Expected Output:
 
 ---
 
-20. Learn Swaras Tool
+18. Learn Swaras Tool
     Description:
     Interactive tool to learn musical notes.
 
