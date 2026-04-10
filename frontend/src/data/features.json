@@ -14,5 +14,9 @@
   { "id": "pitch", "name": "Voice Pitch" },
   { "id": "karaoke", "name": "Karaoke" },
   { "id": "visualizer", "name": "Beat Visualizer" },
-  { "id": "swaras", "name": "Learn Swaras" }
+  { "id": "swaras", "name": "Learn Swaras" },
+  {
+  "id": "pitch",
+  "name": "Voice Pitch Detection"
+}
 ]

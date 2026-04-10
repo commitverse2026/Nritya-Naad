@@ -349,25 +349,27 @@ export default function Quiz() {
                 <span style={{ fontSize: "13px", color: "#5D3A1A" }}>/ {QUESTIONS.length}</span>
               </div>
 
-              <div style={{ display: "flex", justifyContent: "center", gap: "24px", marginBottom: "32px" }}>
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "22px", fontWeight: 700, color: "#4DB6AC" }}>
-                    {answers.filter(a => a.correct).length}
-                  </div>
-                  <div style={{ fontSize: "12px", color: "#5D3A1A" }}>Correct</div>
-                </div>
-                <div style={{ width: "1px", background: "rgba(255,179,0,0.15)" }} />
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "22px", fontWeight: 700, color: "#E57373" }}>
-                    {answers.filter(a => !a.correct).length}
-                  </div>
-                  <div style={{ fontSize: "12px", color: "#5D3A1A" }}>Incorrect</div>
-                </div>
-                <div style={{ width: "1px", background: "rgba(255,179,0,0.15)" }} />
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "22px", fontWeight: 700, color: "#FFB300" }}>
-                    {Math.round((score / QUESTIONS.length) * 100)}%
-                  </div>
-                  <div style={{ fontSize: "12px", color: "#5D3A1A" }}>Score</div>
-                </div>
+                            <div style={{ display: "flex", justifyContent: "center", gap: "12px" }}>
+                <button
+                  onClick={handleRestart}
+                  style={{
+                    padding: "12px 20px",
+                    borderRadius: "40px",
+                    background: "linear-gradient(135deg, #FF6B00, #C2185B)",
+                    border: "none",
+                    color: "#fff",
+                    fontSize: "14px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Restart Quiz
+                </button>
               </div>
+            </div>
+          </div>
+
+        )}
+      </div>
+    </div>
+  );
+}
