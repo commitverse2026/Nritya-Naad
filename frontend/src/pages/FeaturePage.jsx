@@ -134,7 +134,7 @@ export default function FeaturePage() {
             </>
           )}
         </div>
-=======
+
         {id === "stories" ? (
           <div style={{ marginTop: "32px", width: "100%", display: "flex", justifyContent: "center" }}>
             <UserStories theme={theme} />
