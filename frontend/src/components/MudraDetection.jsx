@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { HandLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
 
 // Helper to check if a finger is folded (assuming hand is upright)
@@ -69,7 +69,82 @@ export default function MudraDetection() {
   const handLandmarkerRef = useRef(null);
   const requestRef = useRef();
 
-  useEffect(() => {
+  const predictWebcam = () => {
+    if (!videoRef.current || !handLandmarkerRef.current) return;
+    
+    let lastVideoTime = -1;
+    
+    const renderLoop = () => {
+      const video = videoRef.current;
+      const canvas = canvasRef.current;
+      if (!video || !canvas) return;
+
+      if (video.currentTime !== lastVideoTime) {
+        lastVideoTime = video.currentTime;
+        
+        // Pass video directly to HandLandmarker API
+        const results = handLandmarkerRef.current.detectForVideo(video, performance.now());
+        
+        if (results.landmarks && results.landmarks.length > 0) {
+          const detected = identifyMudra(results.landmarks[0]);
+          setMudra(detected);
+          drawLandmarks(results.landmarks[0]);
+        } else {
+          setMudra("Try again (No hand visible)");
+          clearCanvas();
+        }
+      }
+      
+      requestRef.current = requestAnimationFrame(renderLoop);
+    };
+    
+    requestRef.current = requestAnimationFrame(renderLoop);
+  };
+
+  const clearCanvas = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
+
+  const drawLandmarks = (landmarks) => {
+    const canvas = canvasRef.current;
+    if (!canvas || !videoRef.current) return;
+    const ctx = canvas.getContext("2d");
+    const video = videoRef.current;
+    
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw landmarks
+    ctx.fillStyle = "#00FF00";
+    landmarks.forEach((landmark) => {
+      const x = landmark.x * canvas.width;
+      const y = landmark.y * canvas.height;
+      ctx.beginPath();
+      ctx.arc(x, y, 5, 0, 2 * Math.PI);
+      ctx.fill();
+    });
+  };
+
+  const startWebcam = useCallback(async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "user" }
+      });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        videoRef.current.addEventListener("loadeddata", predictWebcam);
+      }
+    } catch (err) {
+      console.error("Webcam error:", err);
+      setMudra("Webcam access denied");
+    }
+  }, []);
     let active = true;
 
     const initModel = async () => {
@@ -107,22 +182,7 @@ export default function MudraDetection() {
         videoRef.current.srcObject.getTracks().forEach(t => t.stop());
       }
     };
-  }, []);
-
-  const startWebcam = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "user" }
-      });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        videoRef.current.addEventListener("loadeddata", predictWebcam);
-      }
-    } catch (err) {
-      console.error("Webcam error:", err);
-      setMudra("Webcam access denied");
-    }
-  };
+  }, [startWebcam]);
 
   const predictWebcam = () => {
     if (!videoRef.current || !handLandmarkerRef.current) return;
