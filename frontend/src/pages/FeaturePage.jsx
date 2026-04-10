@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import features from "../data/features.json";
 import Navbar from "../components/Navbar";
+import DanceFormsGallery from "../components/DanceFormsGallery";
 
 const FEATURE_THEMES = {
   mudra:      { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "🤲" },
@@ -104,29 +105,33 @@ export default function FeaturePage() {
         </div>
 
         {/* Implementation area */}
-        <div style={{
-          borderRadius: "24px",
-          padding: "60px 40px",
-          border: `2px dashed ${theme.color}40`,
-          background: theme.bg,
-          textAlign: "center",
-          position: "relative",
-          overflow: "hidden",
-        }}>
-          <div style={{ fontSize: "48px", marginBottom: "16px" }}>🚀</div>
-          <h2 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: "22px",
-            fontWeight: 700,
-            color: theme.color,
-            marginBottom: "10px",
+        {id === "gallery" ? (
+          <DanceFormsGallery />
+        ) : (
+          <div style={{
+            borderRadius: "24px",
+            padding: "60px 40px",
+            border: `2px dashed ${theme.color}40`,
+            background: theme.bg,
+            textAlign: "center",
+            position: "relative",
+            overflow: "hidden",
           }}>
-            Implementation Area
-          </h2>
-          <p style={{ fontSize: "14px", color: "#8B6452", fontWeight: 300 }}>
-            Drop your feature components and logic right here
-          </p>
-        </div>
+            <div style={{ fontSize: "48px", marginBottom: "16px" }}>🚀</div>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "22px",
+              fontWeight: 700,
+              color: theme.color,
+              marginBottom: "10px",
+            }}>
+              Implementation Area
+            </h2>
+            <p style={{ fontSize: "14px", color: "#8B6452", fontWeight: 300 }}>
+              Drop your feature components and logic right here
+            </p>
+          </div>
+        )}
 
       </div>
     </div>
