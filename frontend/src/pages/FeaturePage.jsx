@@ -1,6 +1,15 @@
 import { useParams, Link } from "react-router-dom";
 import features from "../data/features.json";
 import Navbar from "../components/Navbar";
+import IndiaMap from "../features/IndiaMap";
+import Academy from "../features/Academy";
+import UserStories from "../components/UserStories";
+import Reels from "../features/Reels";
+const FEATURE_COMPONENTS = {
+  map: IndiaMap,
+  academy: Academy,
+  reels: Reels,
+};
 import UserStories from "../components/UserStories";
 import DanceGallery from "../components/DanceGallery";
 import AcademyListing from "../components/AcademyListing";
@@ -15,7 +24,7 @@ const FEATURE_THEMES = {
   stories:    { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "📖" },
   map:        { color: "#00897B", bg: "rgba(0,137,123,0.08)", gradient: "linear-gradient(135deg, #00897B, #004D40)", icon: "🗺️" },
   upload:     { color: "#3949AB", bg: "rgba(57,73,171,0.08)", gradient: "linear-gradient(135deg, #3949AB, #1A237E)", icon: "🎬" },
-  danceform:       { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", gradient: "linear-gradient(135deg, #FF6B00, #E85D04)", icon: "🎵" },
+  danceform:  { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", gradient: "linear-gradient(135deg, #FF6B00, #E85D04)", icon: "🎵" },
   quiz:       { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "❓" },
   event:      { color: "#00897B", bg: "rgba(0,137,123,0.08)", gradient: "linear-gradient(135deg, #00897B, #004D40)", icon: "📅" },
   reels:      { color: "#3949AB", bg: "rgba(57,73,171,0.08)", gradient: "linear-gradient(135deg, #3949AB, #1A237E)", icon: "🎞️" },
@@ -49,13 +58,12 @@ export default function FeaturePage() {
             textDecoration: "none",
             fontSize: "13px",
             color: "#8B6452",
-            transition: "color 0.2s",
           }}>← All Features</Link>
           <span style={{ color: "#cbb", fontSize: "13px" }}>/</span>
           <span style={{ fontSize: "13px", color: theme.color, fontWeight: 500 }}>{feature?.name}</span>
         </div>
 
-        {/* Feature header card */}
+        {/* Header */}
         <div style={{
           background: "#fff",
           borderRadius: "24px",
@@ -63,9 +71,7 @@ export default function FeaturePage() {
           border: `1.5px solid rgba(0,0,0,0.06)`,
           marginBottom: "24px",
           position: "relative",
-          overflow: "hidden",
         }}>
-          {/* Gradient accent bar */}
           <div style={{
             position: "absolute",
             top: 0, left: 0, right: 0,
@@ -74,12 +80,11 @@ export default function FeaturePage() {
             borderRadius: "24px 24px 0 0",
           }} />
 
-          <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "20px" }}>
+          <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
             <div style={{
               width: "68px", height: "68px",
               borderRadius: "18px",
               background: theme.bg,
-              border: `2px solid ${theme.color}30`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -87,14 +92,9 @@ export default function FeaturePage() {
             }}>
               {theme.icon}
             </div>
+
             <div>
-              <h1 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "32px",
-                fontWeight: 700,
-                color: theme.color,
-                marginBottom: "4px",
-              }}>
+              <h1 style={{ fontSize: "32px", color: theme.color }}>
                 {feature?.name}
               </h1>
               <p style={{ fontSize: "14px", color: "#8B6452" }}>
@@ -103,86 +103,34 @@ export default function FeaturePage() {
             </div>
           </div>
 
-          <p style={{
-            fontSize: "15px",
-            color: "#5D3A1A",
-            lineHeight: 1.7,
-            fontWeight: 300,
-          }}>
-            {id === "gallery" ? (
-              <>
-                Curated imagery and short notes on the classical dance traditions of India — part of the{" "}
-                <strong style={{ color: theme.color, fontWeight: 500 }}>{feature?.name}</strong> module in NrityaNaad.
-              </>
-            ) : id === "academy" ? (
-              <>
-                Discover dance and music <strong style={{ color: theme.color, fontWeight: 500 }}>academies</strong> — filter by city, call, or open maps.
-              </>
-            ) : id === "chatbot" ? (
-              <>
-                <strong style={{ color: theme.color, fontWeight: 500 }}>AI-powered</strong> cultural Q&A. Put{" "}
-                <code style={{ fontSize: "13px", background: theme.bg, padding: "2px 6px", borderRadius: "6px" }}>GROQ_API_KEY</code>{" "}
-                (free at console.groq.com) or <code style={{ fontSize: "13px", background: theme.bg, padding: "2px 6px", borderRadius: "6px" }}>OPENAI_API_KEY</code> /{" "}
-                <code style={{ fontSize: "13px", background: theme.bg, padding: "2px 6px", borderRadius: "6px" }}>GEMINI_API_KEY</code> in <code style={{ fontSize: "13px", background: theme.bg, padding: "2px 6px", borderRadius: "6px" }}>backend/.env</code> — restart the server after saving.
-              </>
-            ) : id === "mindmap" || id === "map" ? (
-              <>
-                A <strong style={{ color: theme.color, fontWeight: 500 }}>visual mind map</strong> of Indian classical art lineages — dance (SNA forms), Hindustani &amp; Carnatic music, and key śāstras &amp; pedagogy. Tap any node for details.
-              </>
-            ) : (
-              <>
-                This is your dedicated workspace for the <strong style={{ color: theme.color, fontWeight: 500 }}>{feature?.name}</strong> module.
-                Build your feature UI and logic here, with full access to the NrityaNaad design system and theme.
-              </>
-            )}
+          <p style={{ fontSize: "15px", color: "#5D3A1A" }}>
+            This is your workspace for <strong style={{ color: theme.color }}>{feature?.name}</strong>
           </p>
         </div>
 
-        {/* Implementation area */}
-        {id === "gallery" ? (
-          <div style={{ marginTop: "8px", width: "100%" }}>
-            <DanceGallery theme={theme} />
-          </div>
-        ) : id === "academy" ? (
-          <div style={{ marginTop: "8px", width: "100%" }}>
-            <AcademyListing theme={theme} />
-          </div>
-        ) : id === "chatbot" ? (
-          <div style={{ marginTop: "8px", width: "100%" }}>
-            <CulturalChatbot theme={theme} />
-          </div>
-        ) : id === "mindmap" || id === "map" ? (
-          <div style={{ marginTop: "8px", width: "100%" }}>
-            <ArtLineageMindMap theme={theme} />
-          </div>
-        ) : id === "stories" ? (
-          <div style={{ marginTop: "32px", width: "100%", display: "flex", justifyContent: "center" }}>
-            <UserStories theme={theme} />
-          </div>
+        {/* Feature content */}
+        {FeatureComponent ? (
+          <FeatureComponent />
         ) : (
-          <div style={{
-            borderRadius: "24px",
-            padding: "60px 40px",
-            border: `2px dashed ${theme.color}40`,
-            background: theme.bg,
-            textAlign: "center",
-            position: "relative",
-            overflow: "hidden",
-          }}>
-            <div style={{ fontSize: "48px", marginBottom: "16px" }}>🚀</div>
-            <h2 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "22px",
-              fontWeight: 700,
-              color: theme.color,
-              marginBottom: "10px",
-            }}>
-              Implementation Area
-            </h2>
-            <p style={{ fontSize: "14px", color: "#8B6452", fontWeight: 300 }}>
-              Drop your feature components and logic right here
-            </p>
-          </div>
+          <>
+            {id === "stories" ? (
+              <div style={{ marginTop: "32px", display: "flex", justifyContent: "center" }}>
+                <UserStories theme={theme} />
+              </div>
+            ) : (
+              <div style={{
+                borderRadius: "24px",
+                padding: "60px",
+                border: `2px dashed ${theme.color}40`,
+                background: theme.bg,
+                textAlign: "center",
+              }}>
+                <div style={{ fontSize: "48px" }}>🚀</div>
+                <h2 style={{ color: theme.color }}>Implementation Area</h2>
+                <p>Drop your feature here</p>
+              </div>
+            )}
+          </>
         )}
 
       </div>
