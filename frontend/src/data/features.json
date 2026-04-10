@@ -17,5 +17,9 @@
   { "id": "pitch", "name": "Voice Pitch Detection" },
   { "id": "karaoke", "name": "Karaoke / Lyrics Sync" },
   { "id": "visualizer", "name": "Beat Visualizer" },
-  { "id": "swaras", "name": "Learn Swaras Tool" }
+  { "id": "swaras", "name": "Learn Swaras" },
+  {
+  "id": "pitch",
+  "name": "Voice Pitch Detection"
+}
 ]

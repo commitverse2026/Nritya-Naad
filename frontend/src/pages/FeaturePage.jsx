@@ -1,62 +1,141 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import features from "../data/features.json";
-import Navbar from "../components/Navbar";
-import UserStories from "../components/UserStories";
-import Karaoke from "../components/Karaoke";
 
-const FEATURE_THEMES = {
-  mudra: { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "🤲" },
-  music: { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", gradient: "linear-gradient(135deg, #FF6B00, #E85D04)", icon: "🎵" },
-  stories: { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "📖" },
-  map: { color: "#00897B", bg: "rgba(0,137,123,0.08)", gradient: "linear-gradient(135deg, #00897B, #004D40)", icon: "🗺️" },
-  upload: { color: "#3949AB", bg: "rgba(57,73,171,0.08)", gradient: "linear-gradient(135deg, #3949AB, #1A237E)", icon: "🎬" },
-  danceform: { color: "#FF6B00", bg: "rgba(255,107,0,0.08)", gradient: "linear-gradient(135deg, #FF6B00, #E85D04)", icon: "🎵" },
-  quiz: { color: "#C2185B", bg: "rgba(194,24,91,0.08)", gradient: "linear-gradient(135deg, #C2185B, #880E4F)", icon: "❓" },
-  event: { color: "#00897B", bg: "rgba(0,137,123,0.08)", gradient: "linear-gradient(135deg, #00897B, #004D40)", icon: "📅" },
-  reels: { color: "#3949AB", bg: "rgba(57,73,171,0.08)", gradient: "linear-gradient(135deg, #3949AB, #1A237E)", icon: "🎞️" },
-  karaoke: { color: "#6A1B9A", bg: "rgba(106,27,154,0.08)", gradient: "linear-gradient(135deg, #6A1B9A, #4A148C)", icon: "🎤" }
-};
+// Existing feature components
+import DanceGallery from "../components/DanceGallery";
+import AcademyListing from "../components/AcademyListing";
+import CulturalChatbot from "../components/CulturalChatbot";
+import ArtLineageMindMap from "../components/ArtLineageMindMap";
+import UserStories from "../components/UserStories";
+
+// NEW: Feature 13
+import PitchDetector from "../components/PitchDetector";
 
 export default function FeaturePage() {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const feature = features.find((f) => f.id === id);
 
   if (!feature) {
-    return <div>Feature not found</div>;
+    return <div style={{ padding: "20px" }}>Feature not found</div>;
   }
 
-  const theme = FEATURE_THEMES[id] || FEATURE_THEMES.music;
+  // 🎨 Theme mapping
+  const themes = {
+    gallery: {
+      color: "#6A1B9A",
+      bg: "rgba(106,27,154,0.08)",
+      gradient: "linear-gradient(135deg, #6A1B9A, #8E24AA)",
+      icon: "💃"
+    },
+    academy: {
+      color: "#2E7D32",
+      bg: "rgba(46,125,50,0.08)",
+      gradient: "linear-gradient(135deg, #2E7D32, #66BB6A)",
+      icon: "🎓"
+    },
+    chatbot: {
+      color: "#0277BD",
+      bg: "rgba(2,119,189,0.08)",
+      gradient: "linear-gradient(135deg, #0277BD, #29B6F6)",
+      icon: "🤖"
+    },
+    mindmap: {
+      color: "#F57C00",
+      bg: "rgba(245,124,0,0.08)",
+      gradient: "linear-gradient(135deg, #F57C00, #FB8C00)",
+      icon: "🧠"
+    },
+    stories: {
+      color: "#AD1457",
+      bg: "rgba(173,20,87,0.08)",
+      gradient: "linear-gradient(135deg, #AD1457, #D81B60)",
+      icon: "📖"
+    },
+    pitch: {
+      color: "#C2185B",
+      bg: "rgba(194,24,91,0.08)",
+      gradient: "linear-gradient(135deg, #C2185B, #880E4F)",
+      icon: "🎙️"
+    }
+  };
+
+  const theme = themes[id] || {
+    color: "#333",
+    bg: "#f5f5f5",
+    gradient: "#ccc",
+    icon: "✨"
+  };
 
   return (
-    <div>
-      <Navbar />
+    <div
+      style={{
+        minHeight: "100vh",
+        padding: "24px",
+        background: theme.bg
+      }}
+    >
+      {/* 🔙 Back Button */}
+      <button
+        onClick={() => navigate("/")}
+        style={{
+          marginBottom: "16px",
+          padding: "8px 12px",
+          border: "none",
+          borderRadius: "6px",
+          cursor: "pointer"
+        }}
+      >
+        ← Back
+      </button>
 
-      <div style={{ padding: "24px" }}>
-        <Link to="/">← Back</Link>
-
-        <h1 style={{ color: theme.color }}>{feature.title}</h1>
-        <p>{feature.description}</p>
-
-        {/* 🎤 Karaoke Feature */}
-        {id === "karaoke" ? (
-          <div style={{ marginTop: "32px", width: "100%" }}>
-            <Karaoke theme={theme} />
-          </div>
-        ) : id === "stories" ? (
-          <div style={{ marginTop: "32px", width: "100%", display: "flex", justifyContent: "center" }}>
-            <UserStories theme={theme} />
-          </div>
-        ) : (
-          <div style={{
-            marginTop: "32px",
-            padding: "20px",
-            borderRadius: "12px",
-            background: theme.bg
-          }}>
-            <p>Feature UI coming soon...</p>
-          </div>
-        )}
+      {/* 🧾 Header */}
+      <div
+        style={{
+          background: theme.gradient,
+          padding: "20px",
+          borderRadius: "12px",
+          color: "white",
+          marginBottom: "20px"
+        }}
+      >
+        <h1>
+          {theme.icon} {feature.name}
+        </h1>
       </div>
+
+      {/* 🚀 Feature Implementation Area */}
+      {id === "gallery" ? (
+        <DanceGallery theme={theme} />
+
+      ) : id === "academy" ? (
+        <AcademyListing theme={theme} />
+
+      ) : id === "chatbot" ? (
+        <CulturalChatbot theme={theme} />
+
+      ) : id === "mindmap" || id === "map" ? (
+        <ArtLineageMindMap theme={theme} />
+
+      ) : id === "stories" ? (
+        <UserStories theme={theme} />
+
+      ) : id === "pitch" ? (
+        <div style={{ marginTop: "8px" , width:"100%"}}>
+          <PitchDetector />
+        </div>
+
+      ) : (
+        <div
+          style={{
+            padding: "20px",
+            background: "white",
+            borderRadius: "12px"
+          }}
+        >
+          🚧 Feature coming soon...
+        </div>
+      )}
     </div>
-  );
-}
+  );}
